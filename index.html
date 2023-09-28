@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Sistemas Operativos</title>
+		<style>
+			div{
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Sistemas Operativos</h1>
+		<form id="form_usuario" action="./" method="POST">
+			<div>
+				<label for="nombre">Nombre:</label>
+				<input type="text" id="nombre">	
+			</div>
+			<div>
+				<label for="apellido">Apellido:</label>
+				<input type="text" id="apellido">
+			</div>
+			<div>	
+				<label for="mail">Correo:</label>
+				<input type="mail" id="mail">
+			</div>
+			<div>
+				<label for="Cargo">Cargo:</label>
+				<input type="text" id="cargo">
+			</div>
+			<div>
+				<label for="ciudad">Ciudad</label>
+				<select id="ciudad" form="form_usuario" >
+					<option>Bogota</option>
+					<option selected=true>Medellin</option>
+					<option>Pasto</option>
+				</select>
+			</div>
+			<input type="submit">
+		</form>
+
+	</body>
+</html>
