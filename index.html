@@ -9,29 +9,29 @@
 	</head>
 	<body>
 		<h1>Sistemas Operativos</h1>
-		<form id="form_usuario" action="./" method="POST">
+		<form id="form_usuario" action="./submit.php" method="POST">
 			<div>
 				<label for="nombre">Nombre:</label>
-				<input type="text" id="nombre">	
+				<input type="text" id="nombre" name="name">	
 			</div>
 			<div>
 				<label for="apellido">Apellido:</label>
-				<input type="text" id="apellido">
+				<input type="text" id="apellido" name="last_name">
 			</div>
 			<div>	
 				<label for="mail">Correo:</label>
-				<input type="mail" id="mail">
+				<input type="mail" id="email" name="email">
 			</div>
 			<div>
 				<label for="Cargo">Cargo:</label>
-				<input type="text" id="cargo">
+				<input type="text" id="cargo" name="position">
 			</div>
 			<div>
 				<label for="ciudad">Ciudad</label>
-				<select id="ciudad" form="form_usuario" >
-					<option>Bogota</option>
-					<option selected=true>Medellin</option>
-					<option>Pasto</option>
+				<select id="ciudad" form="form_usuario" name="city" >
+					<option value="Bogota">Bogota</option>
+					<option selected=true value="Medellin">Medellin</option>
+					<option value="Pasto">Pasto</option>
 				</select>
 			</div>
 			<input type="submit">
