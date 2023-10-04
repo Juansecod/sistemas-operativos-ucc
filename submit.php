@@ -1,6 +1,4 @@
 <?php
-	error_reporting(E_ALL);
-	ini_set('display_errors','On');
 	$server='localhost';
 	$username='root';
 	$password='root1234';
