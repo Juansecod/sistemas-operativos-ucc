@@ -114,8 +114,8 @@ Los comandos en Linux son la columna vertebral de la interacción con el sistema
 
 Esta guía proporciona una descripción general de comandos básicos en Linux y su funcionalidad. A medida que explores y aprendas estos comandos, podrás realizar una amplia variedad de tareas en tu sistema Linux de manera eficiente.
 
-<!-- ## Usuarios en linux
-
+## Usuarios en linux
+<!--
 Existen 3 tipos: Usuarios comunes, usuarios de sistemas y usuarios root
 - Los comunes son los que uno crear, no pueden instalar software. Se encuentran en la carpeta /home. Alli se encuentran el nombre de todos los usuarios comunes
 - Los de sistemas son usuarios creados por los servicios, por ejemplo apache crea su propio usuario apache.
