@@ -1,11 +1,10 @@
 <?php
-	$server='localhost';
-	$username='root';
-	$password='root1234';
-	$database="universidad";
+	$SERVER = getenv("SERVER");
+	$USER = getenv("USER");
+	$PASS = getenv("PASS");
+	$DB = getenv("DATABASE");
 
-
-	$conn = new mysqli($server,$username,$password,$database);
+	$conn = new mysqli($SERVER,$USER,$PASS,$DB);
 	if ($conn->connect_error) {
 	    die('Could not connect: '.$conn->connect_error);
 	}

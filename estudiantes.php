@@ -8,13 +8,12 @@
 </head>
 <body>
 <?php
-
-	$host = 'localhost';
-	$user = 'root';
-	$pass = 'root1234';
-	$database = 'universidad';
-
-	$conn = new mysqli($host, $user, $pass, $database);
+	$SERVER = getenv("SERVER");
+	$USER = getenv("USER");
+	$PASS = getenv("PASS");
+	$DB = getenv("DATABASE");
+	
+	$conn = new mysqli($SERVER, $USER, $PASS, $DB);
 
 	if($conn->connect_error){
 		die('Could not connect: '.$conn->connect_error);
