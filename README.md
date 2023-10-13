@@ -2,7 +2,23 @@
 
 En esta documentación, se proporciona una guía detallada sobre las carpetas esenciales, comandos fundamentales y otros aspectos cruciales para comprender y administrar eficazmente un entorno Linux. Desde las rutas de directorios clave como `/bin`, `/etc` y `/var`, hasta comandos esenciales como `ls`, `cd` y `sudo`, aquí encontrarás recursos valiosos que te ayudarán a navegar, configurar y mantener tu sistema Linux de manera eficiente. Ya sea que estés comenzando con Linux o busques información específica para tareas de administración, esta documentación está diseñada para servir como una referencia útil en tu viaje con sistemas operativos basados en Linux.
 
-## ¿Qué es un Archivo Plano?
+## Indice
+
+- [¿Qué es un Archivo Plano?](#archivos-planos)
+  - [Crear y Editar Archivos Planos en Linux](#crear-y-editar-archivos-planos-en-linux)
+
+- [Carpetas Relevantes en Linux](#carpetas-relevantes-en-linux)
+- [Comandos Básicos en Linux](#comandos-básicos-en-linux)
+  - [Comandos de Navegación y Manipulación de Archivos](#comandos-de-navegación-y-manipulación-de-archivos)
+  - [Comandos de Variables de Entorno y Red](#comandos-de-variables-de-entorno-y-red)
+  - [Comandos de Gestión de Servicios](#comandos-de-gestión-de-servicios)
+  - [Comandos de Apagado](#comandos-de-apagado)
+- [Usuarios en linux](#usuarios-en-linux)
+  - [Comandos de Usuario](#comandos-de-usuario-en-linux)
+  - [Permisos de Usuario](#permisos-de-usuario)
+- [Paquetes](#paquetes)
+
+## Archivos Planos
 
 Un archivo plano, también conocido como archivo de texto sin formato, es un tipo de archivo que no contiene ninguna estructura de formato específica o extensión. A diferencia de los archivos con formato, como los documentos de Microsoft Word o las hojas de cálculo de Excel, los archivos planos almacenan datos en un formato simple y legible por humanos.
 
@@ -112,60 +128,56 @@ Los comandos en Linux son la columna vertebral de la interacción con el sistema
 
 - `poweroff`: Apaga la máquina desde la terminal.
 
+- `reboot`: Reinicia la maquina desde la terminal.
+
 Esta guía proporciona una descripción general de comandos básicos en Linux y su funcionalidad. A medida que explores y aprendas estos comandos, podrás realizar una amplia variedad de tareas en tu sistema Linux de manera eficiente.
 
 ## Usuarios en linux
-<!--
-Existen 3 tipos: Usuarios comunes, usuarios de sistemas y usuarios root
-- Los comunes son los que uno crear, no pueden instalar software. Se encuentran en la carpeta /home. Alli se encuentran el nombre de todos los usuarios comunes
-- Los de sistemas son usuarios creados por los servicios, por ejemplo apache crea su propio usuario apache.
-- El usuario root es un tipo de superusuario, que permite el control total del sistema. Tiene su propia carpeta en el directorio raiz.
 
-En ubunto el primer usuario que crea es un usuario sudo, que le va permitir ejecutar opciones de superusuario
+En el entorno de Linux, existen tres tipos principales de usuarios: usuarios **`comunes`**, usuarios de **`sistemas`** y el usuario **`root`**. Los usuarios **`comunes`** son aquellos que creamos y tienen acceso limitado para instalar software. Sus perfiles se encuentran en la carpeta `/home` y allí reside el conjunto de nombres de todos los usuarios comunes. Por otro lado, los usuarios de **`sistemas`** son generados por los servicios, como el usuario *"apache"* creado por el servidor web Apache. Finalmente, el usuario **`root`** es una categoría especial, tambien conocido como el superusuario, posee control total del sistema y tiene su propio directorio en el directorio raíz(`/` esta es la ruta del directorio raiz en linux).
 
-Linux es muy restrictivo con respecto a la seguridad, en donde los usuarios solo tienen accesos a sus propios archivos. Por ejemplo el usuario apache no tiene acceso a los archivos que puede tener un usuario comun
+Al configurar Ubuntu, el primer usuario que creamos se asocia con privilegios "sudo", lo que le permite ejecutar comandos como superusuario. Linux se caracteriza por su enfoque riguroso en la seguridad, donde cada usuario tiene acceso restringido solo a sus propios archivos. Por ejemplo, el usuario *"apache"* no puede acceder a los archivos de un usuario común.
 
-Para ver todos los usuarios creados se usa nano /etc/shadow. Un usuario comun no tiene acceso a este archivo. Las claves de los usuarios estan encriptadas pero pueden ser decifradas.
+Para visualizar una lista de todos los usuarios en el sistema, se puede utilizar el comando `nano /etc/shadow`. Sin embargo, un usuario común no tiene acceso a este archivo, ya que las contraseñas de los usuarios se encuentran cifradas, aunque técnicamente pueden ser descifradas. Es importante recordar que en Linux, el superusuario se considera alguien que no necesita confirmación, lo que subraya la importancia de actuar con precaución al realizar acciones con privilegios elevados.
 
-Linux considera al superusuario alguien que no necesita confirmacion, por  lo que se debe de tener cuidado con lo que se hace
+### Comandos de Usuario en linux
 
-Comandos de usuario en linux:
-whoami - Muestra el usuario que estoy utilizando
-su - Me permite acceder al usuario root
-sudo - Permite al usuario sudo ejecutar comandos de superusuario
-sudo su - Me permite acceder al usuario root del sistema
-adduser - Permite crear un usuario
-su nombre_usuario - Permite al superusuario identificarse como otro usuario
-exit - Permite al superusuario salir del usuario con el que esta identificado
-passwd nombre_usuario - Permite actualizar la contraseña de un usuario. Si no le paso el nombre cambia la                                 contraseña del usuario sobre el que estoy accediendo
-deluser nombre_usuario - Elimina un usuario 
-deluser --remove-home nombre_usuario - Elimina un usuario junto a su directorio en la capeta home
+- `whoami`:  Este comando muestra el nombre de usuario que estás utilizando en ese momento. Es útil para verificar qué usuario tiene sesión activa en la terminal en un sistema Linux.
 
-Permisos de usuario:
-ls -l - Da una lista detallada de la metadata de los archivos, en donde la tercera y la cuarta columna son el usuario y el grupo.
+- `su nombre_usuario`: Este comando te permite cambiar de usuario a otro usuario, incluyendo al usuario root. Ten en cuenta que para usar su generalmente `su` necesitas la contraseña del usuario al que deseas cambiar.
 
--rw-r--r--  El primer caracter es si es archivo o directorio(-:archivo d:directorio). Los tres siguientes es los permisos del usuario. Los tres siguientes el grupo. Y los ultimos tres al publico en general. 
+- `sudo`: Permite a un usuario con los privilegios adecuados ejecutar comandos con permisos de superusuario, sin la necesidad de iniciar sesión como el usuario root.
 
-Nota: Los tres caracteres estan organizados de esta manera:
-        r - read
-        w - write
-        x - execute
+- `sudo su`: Este comando nos permite acceder a la cuenta del superusuario (root) y realizar acciones que requieren privilegios elevados en el sistema.
 
-chmod 000 archivo - Permite cambiar los permisos de un archivo. El primer digito es del usuario, el segundo del grupo y el tercero del publico en general
+- `adduser nombre_nuevo_usuario`: Este comando te permite crear un nuevo usuario. Una vez ejecutado, el comando te guiará a través del proceso de configuración del nombre, contraseña y demas detalles del nuevo usuario.
 
-En los tres caracteres puedo asignar los permisos asi:
-0 deja sin permisos
-1 ejecucion
-2 escritura
-4 lectura
-Ya si le quiero asignar varios permisos le sumo los digitos de los que deseo
+- `exit`: Este comando se utiliza para salir de la sesión actual de usuario en la terminal. Es comúnmente utilizado cuando estás trabajando como usuario root o cuando has cambiado temporalmente a otro usuario utilizando el comando `su`. Ejecutar `exit` te devolverá a la sesión del usuario original o te desconectará, dependiendo del contexto en el que se use.
 
-chown nombre_dueño.nombre_grupo archivo - Cambia el propietario y grupo de un archivo
-chown :nombre_grupo archivo -  Pemite cambiar solo el grupo de un archivo
-------------------------------------------------------------------------------------------------------------------
+- `passwd nombre_usuario`: Este comando se utiliza para cambiar la contraseña de un usuario específico en un sistema Linux. Si no se especifica un nombre de usuario como argumento, cambia la contraseña del usuario con el que estás actualmente identificado.
+
+- `deluser nombre_usuario`: Este comando se utiliza para eliminar un usuario específico del sistema. Cabe destacar que no elimina los archivos ni el directorio que tiene en home el usuario.
+
+- `deluser --remove-home nombre_usuario`: Este comando elimina al usuario junto con su directorio home(`/home/nombre_usuario`).
+
+- `deluser --remove-all-files nombre_usuario`: Este comando elimina al usuario junto con todos los archivos de su propiedad.
+
+### Permisos de Usuario
+
+Los permisos determinan quién puede acceder, leer, modificar o eliminar archivos y directorios en el sistema. Cada archivo y directorio tiene atributos de permisos que especifican qué acciones pueden realizar los diferentes usuarios. Comprender cómo funcionan los permisos y cómo se pueden modificar es fundamental para los administradores de sistemas y usuarios, ya que les permite controlar quién tiene acceso a qué recursos.
+
+El comando `ls -l` brinda una lista detallada de la metadata de los archivos de la siguiente manera: `-rw-r--r--`. El primer caracter describe si es un archivo(`-`) o un directorio(`d`). Los caracteres desde el primero hasta el tercero nos define los permisos que tiene el propietario del archivo. Luego, los caracteres desde el cuarto hasta el sexto definen los permisos que tiene el grupo propietario. Por ultimo, los caracteres desde el septimo hasta el noveno nos describe los permisos del publico general.
+
+> ***Nota:*** Los tres caracteres se definen de la siguiente forma: `r` quiere decir que cuenta con permisos de lectura, `w` que cuenta con permisos de escritura y por ultimo `x` que cuenta con permisos de ejecucion.
+
+Otro comando importante respecto a los permisos es `chmod 000 nombre_archivo` que permite cambiar los permisos que tiene un archivo. El primer digito son los permisos que le asignaremos al usuario, el segundo al grupo y el tercero al publico en general.
+
+> ***Nota:*** Los numeros que se le pasan al comando representan el permiso de la siguiente manera: el `0` quita todos los permisos, el `1` deja unicamente con permisos de ejecución, el `2` deja unicamente con permisos de escritura y el `4` deja unicamente con permisos de lectura. En caso de querer asignar varios permisos se suman los digitos mensionados.
+
+El comando `chown nombre_dueño.nombre_grupo nombre_archivo` nos permite ambiar el propietario y grupo de un archivo. En caso de querer cambiar unicamente el usuario ingresamos `nombre_usuario` unicamente, y en caso de ser unicamente el grupo se ingresa `:nombre_grupo`.
 
 ## Paquetes
-
+<!--
 Un repositorio es una tienda de aplicaciones, que nos permite instalar el software y ya esta comprobado que esta testeado y es compatible con èl. 
 
 Los paquetes son similares a los .exe de windows, que nos permite instalar un software de manera externa. Los nombres de paquetes nunca tienen espacio
