@@ -13,10 +13,12 @@ En esta documentación, se proporciona una guía detallada sobre las carpetas es
   - [Comandos de Variables de Entorno y Red](#comandos-de-variables-de-entorno-y-red)
   - [Comandos de Gestión de Servicios](#comandos-de-gestión-de-servicios)
   - [Comandos de Apagado](#comandos-de-apagado)
-- [Usuarios en linux](#usuarios-en-linux)
+- [Usuarios en Linux](#usuarios-en-linux)
   - [Comandos de Usuario](#comandos-de-usuario-en-linux)
   - [Permisos de Usuario](#permisos-de-usuario)
 - [Paquetes](#paquetes)
+  - [Comandos para instalar software](#comandos-para-instalar-software)
+- [Servicios en Linux](#servicios-en-linux)
 
 ## Archivos Planos
 
@@ -82,59 +84,60 @@ Los comandos en Linux son la columna vertebral de la interacción con el sistema
 
 ### Comandos de Navegación y Manipulación de Archivos
 
-- `cd nombre_carpeta`: Permite acceder a una carpeta específica.
+- **`cd nombre_carpeta`:** Permite acceder a una carpeta específica.
 
-- `ls`: Muestra una lista de los archivos en el directorio actual. También se puede especificar una ruta para listar archivos en ubicaciones específicas.
+- **`ls`:** Muestra una lista de los archivos en el directorio actual. También se puede especificar una ruta para listar archivos en ubicaciones específicas.
 
-- `mkdir nombre_carpeta`: Crea una nueva carpeta en la ruta actual.
+- **`mkdir nombre_carpeta`:** Crea una nueva carpeta en la ruta actual.
 
-- `nano nombre_archivo`: Abre un archivo con el editor de texto Nano.
+- **`nano nombre_archivo`:** Abre un archivo con el editor de texto Nano.
 
-- `cp nombre_archivo carpeta_destino/nombre_copia`: Copia un archivo a una ubicación específica y permite renombrarlo si es necesario. Si solo deseas hacer una copia en la carpeta actual, omite el nombre de la copia.
+- **`cp nombre_archivo carpeta_destino/nombre_copia`:** Copia un archivo a una ubicación específica y permite renombrarlo si es necesario. Si solo deseas hacer una copia en la carpeta actual, omite el nombre de la copia.
 
-- `mv nombre_archivo carpeta_destino/nuevo_nombre`: Mueve o renombra un archivo. Omitir la carpeta de destino o el nuevo nombre permite realizar acciones específicas.
+- **`mv nombre_archivo carpeta_destino/nuevo_nombre`:** Mueve o renombra un archivo. Omitir la carpeta de destino o el nuevo nombre permite realizar acciones específicas.
 
-- `rm nombre_archivo`: Elimina un archivo.
+- **`rm nombre_archivo`:** Elimina un archivo.
 
-- `rmdir nombre_directorio` || `rm -r nombre_directorio`: Remueve un directorio. Nota: `rmdir` solo funciona si el directorio está vacío.
+- **`rmdir nombre_directorio` || `rm -r nombre_directorio`:** Remueve un directorio.
+  > **Nota:** `rmdir` solo funciona si el directorio está vacío.
 
-- `pwd`: Imprime el directorio actual.
+- **`pwd`:** Imprime el directorio actual.
 
 ### Comandos de Variables de Entorno y Red
 
-- `env`: Muestra las variables de entorno del sistema.
+- **`env`:** Muestra las variables de entorno del sistema.
 
-- `printenv`: Muestra las variables de entorno, ordenándolas alfabéticamente.
+- **`printenv`:** Muestra las variables de entorno, ordenándolas alfabéticamente.
 
-- `grep "patrón" nombre_archivo`: Busca patrones específicos en un archivo y muestra las líneas que coinciden.
+- **`grep "patrón" nombre_archivo`:** Busca patrones específicos en un archivo y muestra las líneas que coinciden.
 
-- `grep -i "patrón" nombre_archivo`: Realiza una búsqueda sin distinción entre mayúsculas y minúsculas.
+- **`grep -i "patrón" nombre_archivo`:** Realiza una búsqueda sin distinción entre mayúsculas y minúsculas.
 
-- `grep -n "patrón" nombre_archivo`: Muestra las líneas coincidentes junto con su número de línea.
+- **`grep -n "patrón" nombre_archivo`:** Muestra las líneas coincidentes junto con su número de línea.
 
-- `hostname -i`: Muestra la dirección IP de la máquina en una red local.
+- **`hostname -i`:** Muestra la dirección IP de la máquina en una red local.
 
-- `ifconfig`: Ofrece información detallada sobre la configuración de red de la máquina, incluyendo direcciones IP y más.
+- **`ifconfig`:** Ofrece información detallada sobre la configuración de red de la máquina, incluyendo direcciones IP y más.
 
     > **Nota**: Para utilizar el comando `ifconfig`, es necesario contar con el paquete `net-tools` instalado en su sistema. Para obtener instrucciones sobre cómo instalar paquetes adicionales, consulte la sección [paquetes](#paquetes) más adelante en este documento.
 
 ### Comandos de Gestión de Servicios
 
-- `systemctl status nombre_servicio`: Muestra información sobre el estado de un servicio del sistema.
+- **`systemctl status nombre_servicio`:** Muestra información sobre el estado de un servicio del sistema.
 
-- `systemctl restart nombre_servicio`: Permite reiniciar un servicio del sistema.
+- **`systemctl restart nombre_servicio`:** Permite reiniciar un servicio del sistema.
 
 ### Comandos de Apagado
 
-- `poweroff`: Apaga la máquina desde la terminal.
+- **`poweroff`:** Apaga la máquina desde la terminal.
 
-- `reboot`: Reinicia la maquina desde la terminal.
+- **`reboot`:** Reinicia la maquina desde la terminal.
 
 Esta guía proporciona una descripción general de comandos básicos en Linux y su funcionalidad. A medida que explores y aprendas estos comandos, podrás realizar una amplia variedad de tareas en tu sistema Linux de manera eficiente.
 
-## Usuarios en linux
+## Usuarios en Linux
 
-En el entorno de Linux, existen tres tipos principales de usuarios: usuarios **`comunes`**, usuarios de **`sistemas`** y el usuario **`root`**. Los usuarios **`comunes`** son aquellos que creamos y tienen acceso limitado para instalar software. Sus perfiles se encuentran en la carpeta `/home` y allí reside el conjunto de nombres de todos los usuarios comunes. Por otro lado, los usuarios de **`sistemas`** son generados por los servicios, como el usuario *"apache"* creado por el servidor web Apache. Finalmente, el usuario **`root`** es una categoría especial, tambien conocido como el superusuario, posee control total del sistema y tiene su propio directorio en el directorio raíz(`/` esta es la ruta del directorio raiz en linux).
+En el entorno de Linux, existen tres tipos principales de usuarios: usuarios **`comunes`**, usuarios de **`sistemas`** y el usuario **`root`**. Los usuarios **`comunes`** son aquellos que creamos y tienen acceso limitado para instalar software. Sus perfiles se encuentran en la carpeta `/home` y allí reside el conjunto de nombres de todos los usuarios comunes. Por otro lado, los usuarios de **`sistemas`** son generados por los servicios, como el usuario *"apache"* creado por el servidor web Apache. Finalmente, el usuario **`root`** es una categoría especial, tambien conocido como el superusuario, posee control total del sistema y tiene su propio directorio en el directorio raíz(`/`) esta es la ruta del directorio raiz en linux.
 
 Al configurar Ubuntu, el primer usuario que creamos se asocia con privilegios "sudo", lo que le permite ejecutar comandos como superusuario. Linux se caracteriza por su enfoque riguroso en la seguridad, donde cada usuario tiene acceso restringido solo a sus propios archivos. Por ejemplo, el usuario *"apache"* no puede acceder a los archivos de un usuario común.
 
@@ -142,25 +145,25 @@ Para visualizar una lista de todos los usuarios en el sistema, se puede utilizar
 
 ### Comandos de Usuario en linux
 
-- `whoami`:  Este comando muestra el nombre de usuario que estás utilizando en ese momento. Es útil para verificar qué usuario tiene sesión activa en la terminal en un sistema Linux.
+- **`whoami`:**  Este comando muestra el nombre de usuario que estás utilizando en ese momento. Es útil para verificar qué usuario tiene sesión activa en la terminal en un sistema Linux.
 
-- `su nombre_usuario`: Este comando te permite cambiar de usuario a otro usuario, incluyendo al usuario root. Ten en cuenta que para usar su generalmente `su` necesitas la contraseña del usuario al que deseas cambiar.
+- **`su nombre_usuario`:** Este comando te permite cambiar de usuario a otro usuario, incluyendo al usuario root. Ten en cuenta que para usar su generalmente `su` necesitas la contraseña del usuario al que deseas cambiar.
 
-- `sudo`: Permite a un usuario con los privilegios adecuados ejecutar comandos con permisos de superusuario, sin la necesidad de iniciar sesión como el usuario root.
+- **`sudo`:** Permite a un usuario con los privilegios adecuados ejecutar comandos con permisos de superusuario, sin la necesidad de iniciar sesión como el usuario root.
 
-- `sudo su`: Este comando nos permite acceder a la cuenta del superusuario (root) y realizar acciones que requieren privilegios elevados en el sistema.
+- **`sudo su`:** Este comando nos permite acceder a la cuenta del superusuario (root) y realizar acciones que requieren privilegios elevados en el sistema.
 
-- `adduser nombre_nuevo_usuario`: Este comando te permite crear un nuevo usuario. Una vez ejecutado, el comando te guiará a través del proceso de configuración del nombre, contraseña y demas detalles del nuevo usuario.
+- **`adduser nombre_nuevo_usuario`:** Este comando te permite crear un nuevo usuario. Una vez ejecutado, el comando te guiará a través del proceso de configuración del nombre, contraseña y demas detalles del nuevo usuario.
 
-- `exit`: Este comando se utiliza para salir de la sesión actual de usuario en la terminal. Es comúnmente utilizado cuando estás trabajando como usuario root o cuando has cambiado temporalmente a otro usuario utilizando el comando `su`. Ejecutar `exit` te devolverá a la sesión del usuario original o te desconectará, dependiendo del contexto en el que se use.
+- **`exit`:** Este comando se utiliza para salir de la sesión actual de usuario en la terminal. Es comúnmente utilizado cuando estás trabajando como usuario root o cuando has cambiado temporalmente a otro usuario utilizando el comando `su`. Ejecutar `exit` te devolverá a la sesión del usuario original o te desconectará, dependiendo del contexto en el que se use.
 
-- `passwd nombre_usuario`: Este comando se utiliza para cambiar la contraseña de un usuario específico en un sistema Linux. Si no se especifica un nombre de usuario como argumento, cambia la contraseña del usuario con el que estás actualmente identificado.
+- **`passwd nombre_usuario`:** Este comando se utiliza para cambiar la contraseña de un usuario específico en un sistema Linux. Si no se especifica un nombre de usuario como argumento, cambia la contraseña del usuario con el que estás actualmente identificado.
 
-- `deluser nombre_usuario`: Este comando se utiliza para eliminar un usuario específico del sistema. Cabe destacar que no elimina los archivos ni el directorio que tiene en home el usuario.
+- **`deluser nombre_usuario`:** Este comando se utiliza para eliminar un usuario específico del sistema. Cabe destacar que no elimina los archivos ni el directorio que tiene en home el usuario.
 
-- `deluser --remove-home nombre_usuario`: Este comando elimina al usuario junto con su directorio home(`/home/nombre_usuario`).
+- **`deluser --remove-home nombre_usuario`:** Este comando elimina al usuario junto con su directorio home(`/home/nombre_usuario`).
 
-- `deluser --remove-all-files nombre_usuario`: Este comando elimina al usuario junto con todos los archivos de su propiedad.
+- **`deluser --remove-all-files nombre_usuario`:** Este comando elimina al usuario junto con todos los archivos de su propiedad.
 
 ### Permisos de Usuario
 
@@ -177,20 +180,25 @@ Otro comando importante respecto a los permisos es `chmod 000 nombre_archivo` qu
 El comando `chown nombre_dueño.nombre_grupo nombre_archivo` nos permite ambiar el propietario y grupo de un archivo. En caso de querer cambiar unicamente el usuario ingresamos `nombre_usuario` unicamente, y en caso de ser unicamente el grupo se ingresa `:nombre_grupo`.
 
 ## Paquetes
+
+En un sistema Linux, existen dos terminos que pueden confundirse: **Repositorio** y **Paquete**. Un **`repositorio`** es una tienda de aplicaciones que alberga software probado y compatible con ese sistema(Debian, Kali, Fedora, etc). Los repositorios son fuentes seguras para instalar software en tu sistema operativo. Por otro lado, los **`paquetes`** son similares a los archivos de ejecucion(.exe) en Windows, ya que te permiten instalar software de manera externa en tu sistema Linux. Los nombres de los paquetes están diseñados para no contener espacios, lo que facilita su administración y uso. La combinación de repositorios y paquetes ofrece una forma segura y conveniente de gestionar el software en un sistema Linux.
+
+### Comandos para instalar software
+
+- **`apt` || `apt-get`:** Es una herramienta esencial para instalar paquetes de software en sistemas operativos basados en Debian mediante la terminal.
+
+- **`apt update`||`apt-get update`:** Ambos comandos actualizan la lista de paquetes disponibles en los repositorios de software del sistema, asegurando que tengas acceso a las últimas actualizaciones y nuevas aplicaciones.
+
+- **`apt-cache search palabra_clave`:** Este comando te permite buscar software en los repositorios del sistema a través de la terminal, utilizando una palabra clave como criterio de búsqueda.
+
+- **`apt install nombre_paquete`||`apt-get install nombre_paquete`:**: Este comando permite instalar un paquete especifico desde los repositorios del sistema atraves de la terminal.
+
+- **`add-apt-repository nombre_paquete`:**: Este comando te permite agregar un nuevo repositorio de paquetes al sistema a través de la terminal. Esto es útil cuando deseas instalar software que no está en los repositorios predeterminados y necesitas agregar fuentes adicionales para acceder a él.
+
+- **`dpkg -i nombre_archivo`**:  Este comando te permite instalar un software que no está empaquetado en los repositorios del sistema, lo que es útil cuando deseas instalar aplicaciones que no están disponibles a través de los métodos convencionales de gestión de paquetes.
+
+## Servicios en Linux
 <!--
-Un repositorio es una tienda de aplicaciones, que nos permite instalar el software y ya esta comprobado que esta testeado y es compatible con èl. 
-
-Los paquetes son similares a los .exe de windows, que nos permite instalar un software de manera externa. Los nombres de paquetes nunca tienen espacio
-
-Comandos para instalar software:
-apt - Es el comando para instalar paqueteria en todo SO basado en debian
-apt update - Actualiza el listado de la tienda del software que tiene disponible
-apt-cache search palabra_clave - Permite buscar software atraves de la terminal
-apt-get install nombre_paquete - Permite instalar un paquete
-add-apt-repository nombre_paquete - Permite agregar un paquete al listado
-dpkg -i nombre_archivo - Permite descargar e instalar un software que no se encuentra empaquetado en la tienda
-------------------------------------------------------------------------------------------------------------------
-Servicios en linux
 Es diferente instalar un programa a un servicio. Un servicio tambien es un programa que se instala, con la caracteristica es que ofrece un servicio en la red.
 
 Existen varios servicios para un servicio web, algunos son apache o nginx
